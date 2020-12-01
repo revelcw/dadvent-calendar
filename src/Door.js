@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Dialog from "@reach/dialog";
 import "@reach/dialog/styles.css";
+import { ReactComponent as LockIcon } from "./lock.svg";
 
 const Door = ({ number, date, joke }) => {
   const locked = number > date;
@@ -20,8 +21,10 @@ const Door = ({ number, date, joke }) => {
             <span aria-hidden>×</span>
           </button>
         </span>
+        {/* This is the question of the joke */}
         <p>{joke.q}</p>
         <div>
+          {/* This is the button to show the answer */}
           <div>
             {joke.a ? (
               <button
@@ -33,15 +36,24 @@ const Door = ({ number, date, joke }) => {
             ) : null}
           </div>
           <br />
+          {/* This is the answer */}
           <div>{showAnswer && joke.a ? joke.a : null}</div>
         </div>
       </Dialog>
 
-      <div className="door">
+      <div
+        title={
+          locked
+            ? `Locked (Opens on Dec ${number})`
+            : `Joke door for Dec ${number}`
+        }
+        className="door"
+      >
         <button onClick={open} disabled={locked}>
           {locked ? "Locked" : "Open"}
         </button>
-        <div className="number">{number}</div>
+        {locked ? <LockIcon /> : <div className="number">{number}</div>}
+        {locked && <div className="locked-number">{number}</div>}
       </div>
     </>
   );

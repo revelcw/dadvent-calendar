@@ -1,5 +1,16 @@
+:root {
+  --blue: #4d86bf;
+  --red: #9d1c13;
+  --green: #47804d;
+}
+
+*[tabindex="0"]:focus:not(.focus-visible),
+button:focus:not(.focus-visible) {
+  outline: none;
+}
+
 body {
-  background-color: #1e4d75;
+  background-color: var(--blue);
   font-family: sans-serif;
   color: white;
 }
@@ -14,10 +25,10 @@ h1 {
 h1::before,
 h1::after {
   display: inline-block;
-  content: '';
+  content: "";
   width: 50px;
   height: 30px;
-  background-image: url('./holly.png');
+  background-image: url("./holly.png");
   background-size: 40px;
   background-repeat: no-repeat;
 }
@@ -52,18 +63,37 @@ a {
 .door {
   height: 175px;
   width: 150px;
+  position: relative;
   display: flex;
   flex-direction: column-reverse;
   cursor: default;
   margin: 5px;
   overflow: hidden;
   border-radius: 10px;
-  background-color: #47804d;
+  background-color: var(--green);
   transition: 300ms;
+}
+
+.door svg {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  left: 29px;
+  top: 24px;
+  opacity: 0.6;
+  fill: white;
 }
 
 button {
   cursor: pointer;
+}
+
+.locked-number {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 10px;
+  opacity: 0.6;
 }
 
 button:disabled {
@@ -75,12 +105,6 @@ button:disabled {
   margin-bottom: 20px;
   color: white;
 }
-
-.door:hover {
-  height: 180px;
-  width: 155px;
-}
-
 .door button {
   margin: 0;
   border-radius: 0;
@@ -88,7 +112,7 @@ button:disabled {
   border-top: solid 1px gray;
   height: 40px;
   font-size: 1.2em;
-  background-color: #701b15;
+  background-color: var(--red);
   color: white;
 }
 
@@ -106,7 +130,7 @@ button:disabled {
   align-items: left;
   margin: 10vh auto;
   border-radius: 10px;
-  background: #1e4d75 !important;
+  background: var(--blue) !important;
   padding: 2rem;
   outline: none;
 }
@@ -114,7 +138,7 @@ button:disabled {
 [data-reach-dialog-content] button.show-answer {
   border: none;
   padding: 10px 20px;
-  background-color: #701b15;
+  background-color: var(--red);
   color: white;
   font-size: 1em;
 }
