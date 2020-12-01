@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import useVisibilityChange from "use-visibility-change";
-import jokes from "./jokes.json";
-import "./styles.css";
-import Door from "./Door";
+import React, { useState } from 'react';
+import useVisibilityChange from 'use-visibility-change';
+import jokes from './jokes.json';
+import './styles.css';
+import Door from './Door';
+
+const jokevent = window.location.hostname.split('.')[0] === 'jokevent';
 
 export default function App() {
   const [date, setDate] = useState(new Date().getDate());
@@ -13,9 +15,11 @@ export default function App() {
   });
   return (
     <div className="App">
-      <h1>G'ma Jane's Joke-vent Calendar</h1>
+      <h1>
+        {jokevent ? "G'ma Jane's Joke-vent Calendar" : 'Dadvent Calendar'}
+      </h1>
       <h2>
-        by Revel Carlberg West{" "}
+        by Revel Carlberg West{' '}
         <a
           href="https://twitter.com/revelcw"
           rel="noopener noreferrer"
