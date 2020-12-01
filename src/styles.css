@@ -1,0 +1,116 @@
+body {
+  background-color: lightskyblue;
+  font-family: sans-serif;
+}
+
+p {
+  font-family: sans-serif;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+h1::before,
+h1::after {
+  display: inline-block;
+  content: "";
+  width: 50px;
+  height: 30px;
+  background-image: url("img/holly.png");
+  background-size: 40px;
+  background-repeat: no-repeat;
+}
+h1::before {
+  transform: scaleX(-1);
+  filter: FlipH;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.close-button {
+  border: none;
+  background: none;
+  font-size: 25px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.door {
+  height: 175px;
+  width: 150px;
+  display: flex;
+  flex-direction: column-reverse;
+  cursor: default;
+  margin: 5px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: rgb(99, 199, 104);
+  transition: 300ms;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.number {
+  font-size: 70px;
+  margin-bottom: 20px;
+  color: rgb(1, 44, 1);
+}
+
+.door:hover {
+  height: 180px;
+  width: 155px;
+}
+
+.door button {
+  margin: 0;
+  border-radius: 0;
+  border: none;
+  border-top: solid 1px gray;
+  height: 40px;
+  font-size: 1.2em;
+  background-color: lightcoral;
+}
+
+.container {
+  display: flex;
+  max-width: 850px;
+  flex-wrap: wrap;
+}
+
+[data-reach-dialog-content] {
+  width: 50vw;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 10vh auto;
+  border-radius: 10px;
+  background: white;
+  padding: 2rem;
+  outline: none;
+}
+
+[data-reach-dialog-content] button.show-answer {
+  border: none;
+  padding: 10px 20px;
+  background-color: lightcoral;
+  font-size: 1em;
+}
