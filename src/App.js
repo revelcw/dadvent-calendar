@@ -4,7 +4,9 @@ import jokes from './jokes.json';
 import './styles.css';
 import Door from './Door';
 
-const jokevent = window.location.hostname.split('.')[0] === 'jokevent';
+const jokevent =
+  window.location.hostname.split('.')[0] === 'jokevent' ||
+  window.location.hostname.split('.')[1] === 'netlify';
 
 export default function App() {
   const [date, setDate] = useState(new Date().getDate());
