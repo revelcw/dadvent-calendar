@@ -75,6 +75,18 @@ a {
   transition: 300ms;
 }
 
+@media only screen and (max-device-width: 800px) {
+  .door {
+    zoom: 0.9;
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+  .door {
+    zoom: 0.78;
+  }
+}
+
 .door svg {
   position: absolute;
   width: 90px;
