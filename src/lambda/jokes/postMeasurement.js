@@ -7,11 +7,15 @@ const measurementEndpoint = 'https://www.google-analytics.com/mp/collect';
 const url = `${measurementEndpoint}?measurement_id=${measurementId}&api_secret=${apiSecret}`;
 
 const getClientId = (event) => {
-  const cookies = Object.fromEntries(
-    event.headers.cookie.split(';').map((cookie) => cookie.trim().split('='))
-  );
-  const clientId = cookies._ga.substr(6); // ex: "GA1.1.1598453576.1606934459"
-  return clientId;
+  try {
+    const cookies = Object.fromEntries(
+      event.headers.cookie.split(';').map((cookie) => cookie.trim().split('='))
+    );
+    const clientId = cookies._ga.substr(6); // ex: "GA1.1.1598453576.1606934459"
+    return clientId;
+  } catch (ex) {
+    return '123';
+  }
 };
 
 export const postMeasurement = async (event, day) => {
