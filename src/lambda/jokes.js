@@ -1,7 +1,7 @@
 import { postMeasurement } from './jokes/postMeasurement';
 import jokes from './jokes/jokes.json';
 
-exports.handler = async (event, context) => {
+export const handler = async (event, context) => {
   const requestDate = parseInt(event.path.split('/')[4], 10);
   const utcDate = new Date(new Date().getTime() - 28800000).getUTCDate(); // local time + 8 hours
 
@@ -12,7 +12,7 @@ exports.handler = async (event, context) => {
     };
   }
 
-  await postMeasurement(requestDate);
+  await postMeasurement(event, requestDate);
 
   return {
     statusCode: 200,
