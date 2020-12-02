@@ -1,4 +1,5 @@
-const jokes = require('../jokes.json');
+import { postMeasurement } from './jokes/postMeasurement';
+import jokes from './jokes/jokes.json';
 
 exports.handler = async (event, context) => {
   const requestDate = parseInt(event.path.split('/')[4], 10);
@@ -10,6 +11,8 @@ exports.handler = async (event, context) => {
       statusText: 'Too early',
     };
   }
+
+  await postMeasurement(requestDate);
 
   return {
     statusCode: 200,
