@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import useVisibilityChange from 'use-visibility-change';
-import jokes from './jokes.json';
 import './styles.css';
 import Door from './Door';
+
+const days = [...Array(25).keys()]; // [0, 1, ..., 24]
 
 const jokevent =
   window.location.hostname.split('.')[0] === 'jokevent' ||
@@ -31,8 +32,8 @@ export default function App() {
         </a>
       </h2>
       <div className="container">
-        {jokes.map((joke, index) => (
-          <Door joke={joke} date={date} number={index + 1} />
+        {days.map((index) => (
+          <Door date={date} number={index + 1} />
         ))}
       </div>
     </div>

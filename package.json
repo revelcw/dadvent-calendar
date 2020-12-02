@@ -17,11 +17,18 @@
     "use-visibility-change": "0.3.0"
   },
   "devDependencies": {
+    "concurrently": "^5.3.0",
+    "http-proxy-middleware": "^1.0.6",
+    "netlify-lambda": "^2.0.1",
     "typescript": "3.8.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "concurrently 'npm run start:client' 'npm run start:server'",
+    "start:client": "react-scripts start",
+    "start:server": "netlify-lambda serve src/lambda -c webpack.server.js",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "react-scripts build",
+    "build:server": "netlify-lambda build src/lambda",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

@@ -7,6 +7,8 @@
 
 # build files
 /packages/shared-tsdx/dist
+/dist
+/build
 
 # testing
 /coverage
