@@ -10,6 +10,7 @@
   "dependencies": {
     "@reach/dialog": "0.12.1",
     "@use-it/interval": "1.0.0",
+    "encoding": "^0.1.13",
     "focus-visible": "^5.2.0",
     "node-fetch": "^2.6.1",
     "react": "17.0.0",
