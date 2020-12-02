@@ -2,9 +2,10 @@
   --blue: #4d86bf;
   --red: #9d1c13;
   --green: #47804d;
+  --white: #fff;
 }
 
-*[tabindex="0"]:focus:not(.focus-visible),
+*[tabindex='0']:focus:not(.focus-visible),
 button:focus:not(.focus-visible) {
   outline: none;
 }
@@ -12,7 +13,7 @@ button:focus:not(.focus-visible) {
 body {
   background-color: var(--blue);
   font-family: sans-serif;
-  color: white;
+  color: var(--white);
 }
 
 p {
@@ -25,10 +26,10 @@ h1 {
 h1::before,
 h1::after {
   display: inline-block;
-  content: "";
+  content: '';
   width: 50px;
   height: 30px;
-  background-image: url("./holly.png");
+  background-image: url('./holly.png');
   background-size: 40px;
   background-repeat: no-repeat;
 }
@@ -43,7 +44,7 @@ h2 {
 
 a {
   text-decoration: none;
-  color: white;
+  color: var(--white);
 }
 
 .close-button {
@@ -81,7 +82,7 @@ a {
   left: 29px;
   top: 24px;
   opacity: 0.6;
-  fill: white;
+  fill: var(--white);
 }
 
 button {
@@ -103,7 +104,7 @@ button:disabled {
 .number {
   font-size: 70px;
   margin-bottom: 20px;
-  color: white;
+  color: var(--white);
 }
 .door button {
   margin: 0;
@@ -113,13 +114,14 @@ button:disabled {
   height: 40px;
   font-size: 1.2em;
   background-color: var(--red);
-  color: white;
+  color: var(--white);
 }
 
 .container {
   display: flex;
   max-width: 850px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 [data-reach-dialog-content] {
@@ -139,6 +141,6 @@ button:disabled {
   border: none;
   padding: 10px 20px;
   background-color: var(--red);
-  color: white;
+  color: var(--white);
   font-size: 1em;
 }
