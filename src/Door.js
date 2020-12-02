@@ -65,7 +65,7 @@ const Door = ({ number, date }) => {
             setStatus('loading');
             open();
             try {
-              const resp = await fetch(`/.netlify/functions/jokes/${date}`);
+              const resp = await fetch(`/.netlify/functions/jokes/${number}`);
               console.log({ resp });
               if (!resp.ok) {
                 setStatus('too early');
