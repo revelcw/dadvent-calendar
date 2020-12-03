@@ -16,7 +16,10 @@ export const postMeasurement = async (event, day) => {
   };
 
   try {
-    const resp = await fetch(url, { method: 'POST', body: payload });
+    const resp = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
     console.log('postMeasurement success', day, clientId, resp.status);
   } catch (ex) {
     console.log('postMeasurement failed', day, clientId);
