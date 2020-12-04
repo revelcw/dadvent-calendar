@@ -1,5 +1,6 @@
 :root {
   --blue: #4d86bf;
+  --dark-blue: #375e85;
   --red: #9d1c13;
   --green: #47804d;
   --white: #fff;
@@ -43,11 +44,14 @@ h2 {
 }
 
 a {
-  text-decoration: none;
+  /* text-decoration: none; */
   color: var(--white);
 }
 
 .close-button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
   border: none;
   background: none;
   font-size: 25px;
@@ -73,18 +77,6 @@ a {
   border-radius: 10px;
   background-color: var(--green);
   transition: 300ms;
-}
-
-@media only screen and (max-device-width: 800px) {
-  .door {
-    zoom: 0.9;
-  }
-}
-
-@media only screen and (max-device-width: 480px) {
-  .door {
-    zoom: 0.78;
-  }
 }
 
 .door svg {
@@ -118,6 +110,7 @@ button:disabled {
   margin-bottom: 20px;
   color: var(--white);
 }
+
 .door button {
   margin: 0;
   border-radius: 0;
@@ -136,6 +129,25 @@ button:disabled {
   justify-content: center;
 }
 
+.about {
+  text-align: center;
+}
+
+.about iframe {
+  width: 560px;
+  height: 315px;
+}
+
+.about-button {
+  margin: 0;
+  border-radius: 5px;
+  border: none;
+  height: 30px;
+  font-size: 0.9em;
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
 [data-reach-dialog-content] {
   width: 50vw;
   font-size: 20px;
@@ -147,6 +159,7 @@ button:disabled {
   background: var(--blue) !important;
   padding: 2rem;
   outline: none;
+  position: relative;
 }
 
 [data-reach-dialog-content] button.show-answer {
@@ -155,4 +168,30 @@ button:disabled {
   background-color: var(--red);
   color: var(--white);
   font-size: 1em;
+}
+
+@media only screen and (max-device-width: 800px) {
+  [data-reach-dialog-content] {
+    width: 90vw !important;
+  }
+
+  .door {
+    zoom: 0.9;
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+  [data-reach-dialog-content] {
+    width: 90vw !important;
+    padding: 1rem !important;
+  }
+
+  .about iframe {
+    width: 364px;
+    height: 205px;
+  }
+
+  .door {
+    zoom: 0.78;
+  }
 }

@@ -7,13 +7,13 @@ const measurementEndpoint = 'https://www.google-analytics.com/mp/collect';
 const url = `${measurementEndpoint}?measurement_id=${measurementId}&api_secret=${apiSecret}`;
 
 export const postMeasurement = async (event, day) => {
-  const clientId = getClientId(event);
-  const payload = {
-    clientId,
-    events: [{ name: 'joke', params: { day } }],
-  };
-
   try {
+    const clientId = getClientId(event);
+    const payload = {
+      clientId,
+      events: [{ name: 'joke', params: { day } }],
+    };
+
     const resp = await fetch(url, {
       method: 'POST',
       body: JSON.stringify(payload),

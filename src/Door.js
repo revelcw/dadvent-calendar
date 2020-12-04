@@ -2,28 +2,26 @@ import React, { useState } from 'react';
 import Dialog from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import { ReactComponent as LockIcon } from './lock.svg';
+import { CloseButton } from './CloseButton';
+import { useDialog } from './useDialog';
 
 const Door = ({ number, date }) => {
+  const { isOpen, openDialog, closeDialog } = useDialog();
+
   const locked = number > date;
   const [joke, setJoke] = useState({});
   const [status, setStatus] = useState('ready');
-  const [showDialog, setShowDialog] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
-  const open = () => setShowDialog(true);
   const close = () => {
-    setShowDialog(false);
+    closeDialog();
     setShowAnswer(false);
   };
 
   return (
     <>
-      <Dialog isOpen={showDialog} onDismiss={close}>
+      <Dialog isOpen={isOpen} onDismiss={close}>
         <>
-          <span>
-            <button className="close-button" onClick={close}>
-              <span aria-hidden>×</span>
-            </button>
-          </span>
+          <CloseButton onClose={close} />
           {status === 'loading' && <h2>loading...</h2>}
           {status === 'too early' && <h2>You can't open this door yet!</h2>}
           {status === 'error' && <h2>Oops… Error fetching joke.</h2>}
@@ -63,7 +61,7 @@ const Door = ({ number, date }) => {
         <button
           onClick={async () => {
             setStatus('loading');
-            open();
+            openDialog();
             try {
               const resp = await fetch(`/.netlify/functions/jokes/${number}`);
               console.log({ resp });

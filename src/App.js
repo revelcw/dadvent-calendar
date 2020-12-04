@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useVisibilityChange from 'use-visibility-change';
 import './styles.css';
 import Door from './Door';
+import { About } from './About';
 
 const days = [...Array(25).keys()]; // [0, 1, ..., 24]
 
@@ -21,16 +22,8 @@ export default function App() {
       <h1>
         {jokevent ? "G'ma Jane's Joke-vent Calendar" : 'Dadvent Calendar'}
       </h1>
-      <h2>
-        by Revel Carlberg West{' '}
-        <a
-          href="https://twitter.com/revelcw"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          @revelcw
-        </a>
-      </h2>
+      <About />
+
       <div className="container">
         {days.map((index) => (
           <Door date={date} number={index + 1} />
