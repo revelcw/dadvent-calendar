@@ -3,14 +3,14 @@ import jokes from './jokes/jokes.json';
 
 export const handler = async (event, context) => {
   const requestDate = parseInt(event.path.split('/')[4], 10);
-  const utcDate = new Date(new Date().getTime() - 28800000).getUTCDate(); // local time + 8 hours
+  // const utcDate = new Date(new Date().getTime() - 28800000).getUTCDate(); // local time + 8 hours
 
-  if (requestDate > utcDate) {
-    return {
-      statusCode: 425,
-      statusText: 'Too early',
-    };
-  }
+  // if (requestDate > utcDate) {
+  //   return {
+  //     statusCode: 425,
+  //     statusText: 'Too early',
+  //   };
+  // }
 
   await postMeasurement(event, requestDate);
 

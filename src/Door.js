@@ -8,7 +8,8 @@ import { useDialog } from './useDialog';
 const Door = ({ number, date }) => {
   const { isOpen, openDialog, closeDialog } = useDialog();
 
-  const locked = number > date;
+  // const locked = number > date;
+  const locked = false;
   const [joke, setJoke] = useState({});
   const [status, setStatus] = useState('ready');
   const [showAnswer, setShowAnswer] = useState(false);
