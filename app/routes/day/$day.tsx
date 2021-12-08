@@ -1,5 +1,6 @@
 import { CatchBoundaryComponent } from '@remix-run/server-runtime/routeModules';
 import {
+  json,
   LoaderFunction,
   RouteComponent,
   useLoaderData,
@@ -12,12 +13,11 @@ import { DayDialog } from '~/ui/DayDialog';
 import { toInteger } from '~/utils/toInteger';
 import { formatOrdinals } from '~/utils/formatOrdinals';
 import { DadventCalendar } from '~/ui/DadventCalendar';
-import { useEffect } from 'react';
 import { Navigate } from '~/ui/Navigate';
 
 const eightHours = 1000 * 60 * 60 * 8;
 
-export const loader: LoaderFunction = async ({ params }): Promise<Joke> => {
+export const loader: LoaderFunction = ({ params }): Response => {
   const requestDay = toInteger(params.day);
   // this code executes on the server. we don't know the user's time zone, so fudge
   // the current date by 8 hours. the server is maybe/probably in US Eastern time
@@ -26,10 +26,16 @@ export const loader: LoaderFunction = async ({ params }): Promise<Joke> => {
   const isTooEarly = requestDay > utcDate;
   if (isTooEarly) throw new Response('Too early.', { status: 400 });
 
-  const joke = jokes[requestDay - 1];
-  if (!joke) throw new Response('Joke not found.', { status: 404 });
+  const jokeQA = jokes[requestDay - 1];
+  if (!jokeQA) throw new Response('Joke not found.', { status: 404 });
 
-  return { ...joke, day: requestDay };
+  const joke = { ...jokeQA, day: requestDay };
+
+  return json(joke, {
+    headers: {
+      'Cache-Control': 'max-age=300, must-revalidate', // cache joke for 5 mins
+    },
+  });
 };
 
 export const meta: MetaFunction<Joke> = ({ data: joke }) => {
