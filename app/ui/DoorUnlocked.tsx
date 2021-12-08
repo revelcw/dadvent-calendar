@@ -7,6 +7,7 @@ type DoorUnlockedProps = {
 
 export const DoorUnlocked = ({ day }: DoorUnlockedProps) => (
   <Link
+    prefetch="intent"
     title={`Open door for Dec ${formatOrdinals(day)}`}
     className="door unlocked"
     to={`/day/${day}`}

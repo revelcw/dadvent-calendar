@@ -132,10 +132,14 @@ function Layout({ children }: { children: React.ReactNode }) {
           <nav aria-label="Main navigation" className="remix-app__header-nav">
             <ul>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/" prefetch="intent">
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to="/about">About</Link>
+                <Link to="/about" prefetch="intent">
+                  About
+                </Link>
               </li>
               <li>
                 <a href="https://github.com/revelcw/dadvent-calendar">GitHub</a>
